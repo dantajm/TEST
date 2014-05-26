@@ -51,7 +51,7 @@ void formatuj_rownanie(int a, int b, int c)
 	}
 
 
-	if (b > 0)
+	if (b > 0 && a != 0)
 	{
 		printf("+");
 	}
@@ -77,7 +77,7 @@ void formatuj_rownanie(int a, int b, int c)
 
 
 
-	if (c > 0)
+	if (c > 0 && (b != 0 || a != 0))
 	{
 		printf("+");
 	}
@@ -91,9 +91,18 @@ void formatuj_rownanie(int a, int b, int c)
 	{
 		printf("%d", c);
 	}
+	if ((a == 0 && b == 0 && c == 0))
+	{
 
+		printf("0=0");
+		
+	}
+	else
+	{
+		printf("=0");
 
-	printf("=0\n\n");
+	}
+	printf("\n\n");
 }
 
 float oblicz_d(int a, int b, int c)
@@ -107,7 +116,7 @@ void oblicz_pierwiastki(int a, int b, int c, float *x1r, float *x2r, float *x1u,
 	//float x1rS, x2rS, x1uS, x2uS;
 
 	float d = oblicz_d(a, b, c);
-	//printf("DYLTA%g",d);
+	printf("d = %g\n",d);
 	//x1r = &d;
 	//x1r = &((float)-b - sqrt(d)) / (2 * a);//TEST
 	////*x1r = x1rs;
@@ -294,19 +303,25 @@ void oblicz_pierwiastki(int a, int b, int c, float *x1r, float *x2r, float *x1u,
 	}
 	if (a == 0)
 	{
+
 		//printf("a=0\n");
 		if (d != 0)
 		{
 			*x1r = (float)-c / b;
 			//{ printf }
-			if (b == 0 && c != 0)
-			{
-				printf("rownanie sprzeczne");
-			}
-			if (b == 0 && c == 0)
-			{
-				printf("rownanie tozsamosciowe");
-			}
+			//printf("dgsdg");
+			
+		//	*x2r = 0;
+		//	*x2u = 0;
+			
+		}
+		if (b == 0 && c != 0)
+		{
+			printf("rownanie sprzeczne");
+		}
+		if (b == 0 && c == 0)
+		{
+			printf("rownanie tozsamosciowe");
 		}
 	}
 
@@ -411,21 +426,48 @@ void wyswietl_wynik(float d, float *x1r, float *x2r, float *x1u, float *x2u, flo
 {
 	/*if (true)
 	{*/
+	if (*x1r != false && *x2r != false)
+	{
+
 		printf("\nx1=");
 		formatuj_l_zsp(*x1r, *x1u);
-		printf("\nx2=");
-		formatuj_l_zsp(*x2r, *x2u);
-		printf("\nx1+x2=");
-		formatuj_l_zsp(*sr, *su);
+	}
+		if (*irr != false && *iru != false)
+		{
 
-		//printf("\nx1+x2=dsg%g",*su);
+			if (*x2r != false && *x2u != false)
+			{
+				printf("\nx2=");
+				formatuj_l_zsp(*x2r, *x2u);
+				printf("\nx1+x2=");
+				formatuj_l_zsp(*sr, *su);
 
-		printf("\nx1-x2=");
-		formatuj_l_zsp(*rr, *ru);
-		printf("\nx1*x2=");
-		formatuj_l_zsp(*ilr, *ilu);
-		printf("\nx1/x2=");
-		formatuj_l_zsp(*irr, *iru);
+				//printf("\nx1+x2=dsg%g",*su);
+
+				printf("\nx1-x2=");
+				formatuj_l_zsp(*rr, *ru);
+				printf("\nx1*x2=");
+				formatuj_l_zsp(*ilr, *ilu);
+				printf("\nx1/x2=");
+				formatuj_l_zsp(*irr, *iru);
+			}
+			else
+			{
+				//printf("\nx2=");
+				//formatuj_l_zsp(*x2r, *x2u);
+				printf("\nx1+x1=");
+				formatuj_l_zsp(*sr, *su);
+
+				//printf("\nx1+x2=dsg%g",*su);
+
+				printf("\nx1-x1=0");
+				//formatuj_l_zsp(*rr, *ru);
+				printf("\nx1*x2=");
+				formatuj_l_zsp(*ilr, *ilu);
+				printf("\nx1/x2=");
+				formatuj_l_zsp(*irr, *iru);
+			}
+		}
 	/*}
 	
 	if (d > 0)
@@ -461,10 +503,23 @@ void wyswietl_wynik(float d, float *x1r, float *x2r, float *x1u, float *x2u, flo
 	//d=oblicz_d(a,b,c);
 	d=oblicz_d(a, b, c);
 	oblicz_pierwiastki(a, b, c, &x1r, &x2r, &x1u, &x2u);
-	dodaj(d,&x1r,&x2r,&x1u,&x2u,&sr,&su);
-	odejmij(d, &x1r, &x2r, &x1u, &x2u, &rr, &ru);
-	pomnoz(d, &x1r, &x2r, &x1u, &x2u, &ilr, &ilu);
-	podziel(d, &x1r, &x2r, &x1u, &x2u, &irr, &iru);
+	if (a != 0 && b != 0 && c != 0)
+	{
+		if (x2r == false && x2u == false)
+		{
+			dodaj(d, &x1r, &x1r, &x1u, &x1u, &sr, &su);
+			odejmij(d, &x1r, &x1r, &x1u, &x1u, &rr, &ru);
+			pomnoz(d, &x1r, &x1r, &x1u, &x1u, &ilr, &ilu);
+			podziel(d, &x1r, &x1r, &x1u, &x1u, &irr, &iru);
+		}
+		else
+		{
+			dodaj(d, &x1r, &x2r, &x1u, &x2u, &sr, &su);
+			odejmij(d, &x1r, &x2r, &x1u, &x2u, &rr, &ru);
+			pomnoz(d, &x1r, &x2r, &x1u, &x2u, &ilr, &ilu);
+			podziel(d, &x1r, &x2r, &x1u, &x2u, &irr, &iru);
+		}
+	}
 	wyswietl_wynik(d, &x1r, &x2r, &x1u, &x2u, &sr, &su, &rr, &ru, &ilr, &ilu, &irr, &iru);
 	
 	
