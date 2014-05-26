@@ -13,9 +13,9 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	//od 6min
 		//Zmienne globalne
-	int a=13, 
-		b=8, 
-		c=70;
+	int a=1, 
+		b=0, 
+		c=-34;
 	float x1r=0, 
 		x1u=0, 
 		x2r=0, 
@@ -47,7 +47,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 
 
-	if (b > 0)
+	if (b > 0 && a!=0)
 	{
 		printf("+");
 	}
@@ -73,7 +73,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 
 
-	if (c > 0)
+	if (c > 0 && (b!=0||a!=0))
 	{
 		printf("+");
 	}
@@ -133,6 +133,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 			if (x1r == 0)
 			{
+				printf("x1=0", x1r);
 			}
 			if (x1r != 0)
 			{
@@ -246,20 +247,30 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	if (a == 0)
 	{
+		d = ((float)b*b) - (4 * a*(float)c);
+		printf("...d=%g\n", d);
 		//printf("a=0\n");
 		if (d != 0)
 		{
 			x1r = (float)-c / b;
 			//{ printf }
-			if (b == 0 && c != 0)
-			{
-				printf ("sprzeczne");
-			}
-			if( b == 0 && c == 0)
-			{
-				printf("rownanie tozsamosciowe");
-			}
+			printf("x = %g", x1r);
+			
 		}
+		if (b == 0 && c != 0)//xx+0x
+		{
+			printf("sprzeczne");
+		}
+		if (b == 0 && c == 0)
+		{
+			printf("rownanie tozsamosciowe");
+		}
+	/*	else
+		{
+			x1r = (float)-c / b;
+			
+		}
+	*/
 	}
 
 
