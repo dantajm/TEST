@@ -69,6 +69,8 @@ void Uk³ad::Wypisz()
 }
 void Uk³ad::Wypisz_wszystko()
 {
+	system("cls");
+
 	for(int pozycja=0;pozycja<99;pozycja++)
 	{
 		
@@ -112,12 +114,12 @@ void Uk³ad::Wypisz_wszystko()
 void Uk³ad::wypiszID(int pozycja)
 	 {
 		 
-		 cout<<"ID "<<pozycja<<endl;		 
-		 if(tablica[pozycja]->Get_Flag()=='K')cout<<"TYP:KWADRAT"<<endl;
-		 if(tablica[pozycja]->Get_Flag()=='P')cout<<"TYP:PROSTOK¥T"<<endl;
-		 if(tablica[pozycja]->Get_Flag()=='T')cout<<"TYP:TRAPEZ"<<endl;
-		 if(tablica[pozycja]->Get_Flag()=='R')cout<<"TYP:TROJKAT"<<endl;
-		 if(tablica[pozycja]->Get_Flag()=='C')cout<<"TYP:KOLO"<<endl;
+	cout << "ID " << pozycja << "; ";
+	if (tablica[pozycja]->Get_Flag() == 'K')cout << "TYP:KWADRAT; " ;
+	if (tablica[pozycja]->Get_Flag() == 'P')cout << "TYP:PROSTOK¥T; " ;
+	if (tablica[pozycja]->Get_Flag() == 'T')cout << "TYP:TRAPEZ; " ;
+	if (tablica[pozycja]->Get_Flag() == 'R')cout << "TYP:TROJKAT; " ;
+	if (tablica[pozycja]->Get_Flag() == 'C')cout << "TYP:KOLO; " ;
 	 }
 void Uk³ad::Modifikuj_Wybrany()
  {
@@ -280,7 +282,7 @@ bool Uk³ad::porównajMniejszy(int i,int j)
 }
 void Uk³ad::odejmowanie(int i,int j)
 {
-	tablica[id]=*tablica[i]+*tablica[j];
+	tablica[id]=*tablica[i]-*tablica[j];
 }
 bool Uk³ad::Check(int i,int j,Uk³ad obiekt)
 {

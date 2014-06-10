@@ -5,11 +5,11 @@ using namespace std;
 
 void Trójk¹tRównoboczny::Wypisz()
 {
-	cout<<"W1<"<<x1<<","<<y1<<">"<<endl;
-	cout<<"W2<"<<x2<<","<<y2<<">"<<endl;
-	cout<<"W3<"<<x3<<","<<y3<<">"<<endl;	
-	cout<<"Pole="<<Pole()<<endl;
-	cout<<"Obwód="<<Obwód()<<endl;
+	cout << "W1<" << x1 << "," << y1 << ">; ";
+	cout << "W2<" << x2 << "," << y2 << ">; ";
+	cout << "W3<" << x3 << "," << y3 << ">; ";
+	cout<<"Pole="<<Pole();
+	cout << "; Obwod=" << Obwód() << endl;
 
 }
 void Trójk¹tRównoboczny::Przesuñ_o_wektor(int X,int Y)
@@ -60,7 +60,7 @@ Figura* Trójk¹tRównoboczny::operator-(Figura&wsk)
 	Figura *nowy;
 	Trójk¹tRównoboczny *wsk1;
 	wsk1=reinterpret_cast<Trójk¹tRównoboczny*>(&wsk);
-	nowy=new Trójk¹tRównoboczny(x1-wsk1->x1,y1-wsk1->y1,a-wsk1->a,h-wsk1->h);
+	nowy = new Trójk¹tRównoboczny(x1 - wsk1->x1, y1 - wsk1->y1, abs(a - wsk1->a), abs(h - wsk1->h));
 	return nowy;
 }
 Figura* Trójk¹tRównoboczny::operator+(Figura&wsk)
@@ -84,7 +84,7 @@ Trójk¹tRównoboczny Trójk¹tRównoboczny::operator+(Trójk¹tRównoboczny &wsk)
 Trójk¹tRównoboczny Trójk¹tRównoboczny::operator-(Trójk¹tRównoboczny &wsk)
 {
 	Trójk¹tRównoboczny *nowy;
-	nowy=new Trójk¹tRównoboczny(x1-wsk.x1,y1-wsk.y1,a-wsk.a,h-wsk.h);
+	nowy = new Trójk¹tRównoboczny(x1 - wsk.x1, y1 - wsk.y1, abs(a - wsk.a), abs(h - wsk.h));
 	return *nowy;
 }
 float Trójk¹tRównoboczny::Pole()

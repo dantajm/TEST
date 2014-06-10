@@ -54,12 +54,12 @@ void Prostok¹t::Obrót(float radian)
 }
 void Prostok¹t::Wypisz()
 {
-	cout<<"W1<"<<x1<<","<<y1<<">"<<endl;
-	cout<<"W2<"<<x2<<","<<y2<<">"<<endl;
-	cout<<"W3<"<<x3<<","<<y3<<">"<<endl;
-	cout<<"W4<"<<x4<<","<<y4<<">"<<endl;
-	cout<<"Pole="<<Pole()<<endl;
-	cout<<"Obwód="<<Obwód()<<endl;
+	cout << "W1<" << x1 << "," << y1 << ">; " ;
+	cout << "W2<" << x2 << "," << y2 << ">; " ;
+	cout << "W3<" << x3 << "," << y3 << ">; " ;
+	cout << "W4<" << x4 << "," << y4 << ">; " ;
+	cout<<"Pole="<<Pole();
+	cout << "; Obwod=" << Obwód() << endl;
 
 
 
@@ -96,7 +96,7 @@ Prostok¹t Prostok¹t::operator-(Prostok¹t &wsk)
 {
 	
 	Prostok¹t *nowy;
-	nowy=new Prostok¹t(x1-wsk.x1,y1-wsk.y1,bokA-wsk.bokA,bokB-wsk.bokB);
+	nowy=new Prostok¹t(x1-wsk.x1,y1-wsk.y1,abs(bokA-wsk.bokA),abs(bokB-wsk.bokB));
 	return *nowy;
 
 
@@ -110,7 +110,7 @@ Figura*Prostok¹t::operator-(Figura&wsk)
 	Figura *nowy;
 	Prostok¹t *wsk1;
 	wsk1=reinterpret_cast<Prostok¹t*>(&wsk);
-	nowy=new Prostok¹t(x1,y1,bokA-wsk1->readA(),bokB-wsk1->readB());
+	nowy=new Prostok¹t(x1,y1,abs(bokA-wsk1->readA()),abs(bokB-wsk1->readB()));
 	return nowy;
 }
 bool Prostok¹t::operator==(Figura &wsk)

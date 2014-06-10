@@ -37,7 +37,8 @@ Figura* Kwadrat::operator-(Figura&wsk)
 	Figura *nowy;
 	Kwadrat *wsk1;
 	wsk1=reinterpret_cast<Kwadrat*>(&wsk);
-	nowy=new Kwadrat(x1,y1,bokA-wsk1->BOKA());
+	nowy=new Kwadrat(x1,y1,abs(bokA-wsk1->BOKA()));
+	cout << bokA << " sfs "<< wsk1->BOKA();
 	return nowy;	
 }
 Figura* Kwadrat::operator+(Figura&wsk)
@@ -62,7 +63,9 @@ Kwadrat Kwadrat::operator+(Kwadrat &wsk)
 Kwadrat Kwadrat::operator-(Kwadrat &wsk)
 {
 	Kwadrat *nowy;
-	nowy=new Kwadrat(x1-wsk.x1,y1-wsk.y1,bokA-wsk.bokA);
+	//nowy=new Kwadrat(x1-wsk.x1,y1-wsk.y1,bokA-wsk.bokA);
+	nowy = new Kwadrat(wsk.x1 + x1, wsk.y1 + y1, abs(bokA - wsk.bokA));
+	//cout << bokA << " sfs2 " << wsk.bokA << " sfs2 " << wsk.x1 << " sfs2 " << x1;
 	return *nowy;
 
 

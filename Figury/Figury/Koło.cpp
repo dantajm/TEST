@@ -58,13 +58,12 @@ float Ko這::Obw鏚()
 }
 void Ko這::Wypisz()
 {
-	cout<<"S<"<<x1<<","<<y1<<">"<<endl;
-	cout<<"W2<"<<x2<<","<<y2<<">"<<endl;
-	cout<<"W3<"<<x3<<","<<y3<<">"<<endl;
-	cout<<"W4<"<<x4<<","<<y4<<">"<<endl;
-	cout<<"W4<"<<x4<<","<<y4<<">"<<endl;
-	cout<<"Pole="<<Pole()<<endl;
-	cout<<"Obw鏚="<<Obw鏚()<<endl;
+	cout << "S<" << x1 << "," << y1 << ">; ";
+//	cout<<"W2<"<<x2<<","<<y2<<">"<<endl;
+//	cout<<"W3<"<<x3<<","<<y3<<">"<<endl;
+//	cout<<"W4<"<<x4<<","<<y4<<">"<<endl;
+	cout << "Pole=" << Pole() << "; ";
+	cout<<"Obwod="<<Obw鏚()<<endl;
 }
 char Ko這::Get_Flag()
 {
@@ -83,6 +82,8 @@ Figura* Ko這::operator+(Figura&wsk)
 	Figura *nowy;
 	Ko這 *wsk1;	
 	wsk1=reinterpret_cast<Ko這*>(&wsk);
+	//wsk1 = wsk;
+
 	nowy=new Ko這(x1,y1,R+wsk1->Get_R());
 	return nowy;
 
@@ -98,7 +99,7 @@ Ko這 Ko這::operator+(Ko這 &wsk)
 Ko這 Ko這::operator-(Ko這 &wsk)
 {
 	Ko這 *nowy;
-	nowy=new Ko這(x1,y1,R-wsk.Get_R());
+	nowy=new Ko這(x1,y1,abs(R-wsk.Get_R()));
 	return *nowy;
 
 
@@ -112,7 +113,7 @@ Figura*Ko這::operator-(Figura&wsk)
 	Figura *nowy;
 	Ko這 *wsk1;
 	wsk1=reinterpret_cast<Ko這*>(&wsk);
-	nowy=new Ko這(x1,y1,R-wsk1->Get_R());
+	nowy=new Ko這(x1,y1,abs(R-wsk1->Get_R()));
 	return nowy;
 }
 bool Ko這::operator==(Figura &wsk)

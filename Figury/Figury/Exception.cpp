@@ -9,17 +9,17 @@ void IndexRange::Error()
 }
 void Empty::Error()
 {
-	cout<<"********************UK£AD JEST PUSTY*****************************"<<endl;
+	cout<<"<Uklad pusty>"<<endl;
 }
 void FlagMatch::Error()
 {
-	cout<<"Nieodpowiednie Flagi"<<endl;
+	cout<<"Typy Figur nie sa zgodne"<<endl;
 }
 void EmptyElement::Error()
 {
-	cout<<"Element jest pusty"<<endl;
+	cout<<"<Element pusty>"<<endl;
 }
 void End::Error()
 {
-	cout<<"********************KONIEC FIGUR*****************************"<<endl;
+	cout<<"Wypisano wszystkie figury"<<endl;
 }

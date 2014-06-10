@@ -61,14 +61,14 @@ Figura* Trapez::operator-(Figura&wsk)
 	Figura *nowy;
 	Trapez *wsk1;
 	wsk1=reinterpret_cast<Trapez*>(&wsk);
-	nowy=new Trapez(x1,y1,bokA-wsk1->readA(),bokB-wsk1->readB(),wsk1->h()-height);
+	nowy = new Trapez(x1, y1, abs(bokA - wsk1->readA()), abs(bokB - wsk1->readB()), abs(wsk1->h() - height));
 	return nowy;	
 }
 Trapez Trapez::operator-(Trapez &wsk)
 {
 
 	Trapez *nowy;	
-	nowy=new Trapez(x1,y1,bokA-wsk.bokA,bokB-wsk.bokB,height-wsk.h());
+	nowy = new Trapez(x1, y1, abs(bokA - wsk.bokA), abs(bokB - wsk.bokB), abs(height - wsk.h()));
 	return *nowy;
 }
 Trapez Trapez::operator+(Trapez &wsk)
